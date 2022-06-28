@@ -1,5 +1,8 @@
 import Head from "next/head";
 import styles from "../../styles/Slug.module.css";
+import ReactMarkdown from "react-markdown";
+import Link from "next/link";
+import get_file from "../../helpers/get_file";
 
 const fs = require("fs");
 
@@ -14,21 +17,19 @@ export default function ArticleComponent(props) {
 			</Head>
 
 			<main>
+				<Link href="/">Go home</Link>
 				<h1>The Article</h1>
-				<div>{rawArticle}</div>
+				<ReactMarkdown>{rawArticle}</ReactMarkdown>
 			</main>
 		</div>
 	);
 }
 export async function getStaticProps(context) {
-	const request = await fetch(
-		"http://127.0.0.1:3000/api/article/" + context.params.slug
-	);
+	const response = await get_file(context.params.slug);
 
-	const response = await request.json();
 	return {
 		props: {
-			article: response.content,
+			article: response,
 		},
 	};
 }
