@@ -17,7 +17,7 @@ export default function Home(props) {
 			<main className={styles.main}>
 				<h1>The Blog</h1>
 				{available_articles.map((v) => (
-					<h2 key={v}>
+					<h2 className={styles.blog_link} key={v}>
 						<Link href={"/article/" + v}>{v}</Link>
 					</h2>
 				))}

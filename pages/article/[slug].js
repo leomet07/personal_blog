@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Slug.module.css";
 import ReactMarkdown from "react-markdown";
-import Link from "next/link";
 import get_file from "../../helpers/get_file";
 
 const fs = require("fs");
@@ -16,9 +15,9 @@ export default function ArticleComponent(props) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>
-				<Link href="/">Go home</Link>
+			<main id={styles.main}>
 				<h1>The Article</h1>
+				<br></br>
 				<ReactMarkdown>{rawArticle}</ReactMarkdown>
 			</main>
 		</div>
